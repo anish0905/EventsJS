@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *,::after,::before{
+            padding: 0;
+            width: 0;
+            box-sizing: border-box;
+        }
+       
+        .container{
+            height: 80vh;
+            width: 90vw;
+            display: grid;
+    
+            grid-template-columns: repeat(4 ,auto);
+            grid-template-rows: repeat(4 ,auto);
+        }
+        .child{
+            height: 200px;
+            width: 200px;
+          
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+        }
+        span{
+            text-align: center;
+        }
+        .event-block{
+            height: 100px;
+            width: 100px;
+            border: 2px solid red;
+        }
+        p{
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="child">
+        <div class="event-block"></div>
+        <p >click</p>
+    </div>
+  
+    <div class="child">
+        <div class=" event-block "></div>
+        <p>dblclick</p>
+    </div>
+    <div class="child">
+        <div class=" event-block "></div>
+        <p>mouse out</p>
+    </div>
+    <div class="child">
+        <div class=" event-block "></div>
+        <p>mouse over</p>
+    </div>
+    <div class="child">
+        <div class=" event-block "></div>
+        <p>key up</p>
+    </div>
+    <div class="child">
+        <div class=" event-block "></div>
+        <p>key down</p>
+    </div>
+    <div class="child">
+        <div class=" event-block "></div>
+        <p>key press</p>
+    </div>
+    <div class="child">
+        <div class=" event-block "></div>
+         <p>resize</p>
+    </div>
+    
+   <!-- <button onclick="test()">  click me</button> -->
+
+    <script >
+        function generateRandom() 
+{
+    var ans=`#${parseInt(Math.random()*1000000)}`
+ 
+    return ans
+}
+
+let events=["click","dblclick","mouseout","mouseover","keyup","keydown","keypress","resize"]
+
+var paras=document.querySelectorAll("p")
+var blocks=document.querySelectorAll(".event-block")
+
+
+for(let i=0;i<paras.length;i++)
+{
+    if(i<4){
+        paras[i].addEventListener(events[i],()=>{
+            blocks[i].style.background=generateRandom()
+        }) 
+    }
+  else{
+    window.addEventListener(events[i],()=>{
+        blocks[i].style.background=generateRandom()
+    }) 
+  }
+  
+}
+    </script>
+</body>
+</html>

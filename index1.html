@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display: grid;
+            grid-template-columns: auto auto auto ;
+            /* border: 2px solid black; */
+            gap: 15px;
+        }
+        .child{
+            border: 2px solid green;
+            height: 150px;
+            width: 150px;
+
+        }
+        .box p{
+             margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+       <div class="box">
+        <div class="child"></div>
+        <p>Click me</p>
+       </div>
+       <div class="box">
+        <div class="child"></div>
+        <p>dblClick</p>
+       </div>
+       <div class="box">
+        <div class="child"></div>
+        <p>Mouse up</p>
+       </div>
+       <div class="box">
+        <div class="child"></div>
+        <p>Mouse down</p>
+       </div>
+       <div class="box">
+        <div class="child"></div>
+        <p>KeyUp</p>
+       </div>
+       <div class="box">
+        <div class="child"></div>
+        <p>Key down</p>
+       </div>
+       <div class="box">
+        <div class="child"></div>
+        <p>Key press</p>
+       </div>
+       <div class="box">
+        <div class="child"></div>
+        <p>resize</p>
+       </div>
+
+
+    </div>
+
+
+
+    <script>
+  function generateRandom()
+  {
+    let ans = `#${parseInt(Math.random()*1000000)}`;
+    return ans;
+  }
+
+//   console.log(generateRandom());
+
+  let events=["click","dblclick","mouseout","mouseover","keyup","keydown","keypress","resize"];
+              var paras   = document.querySelectorAll("p");
+                var blocks = document.querySelectorAll(".child");
+
+    for(let i = 0 ; i<paras.length ; i++)
+    {
+       if(i<4)
+       {
+        paras[i].addEventListener(events[i],()=>{
+            blocks[i].style.background =generateRandom();
+        })
+       }
+       else{
+        window.addEventListener(events[i],()=>{
+            blocks[i].style.background =generateRandom();
+        })
+       }
+    }
+
+         
+    </script>
+
+</body>
+</html>
